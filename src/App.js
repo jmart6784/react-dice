@@ -1,5 +1,11 @@
+import Dice from "./components/dice";
+
 function App() {
-  return <h1>Hello</h1>;
+  return (
+    <div>
+      <Dice />
+    </div>
+  );
 }
 
 export default App;
