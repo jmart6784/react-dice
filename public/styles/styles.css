@@ -81,7 +81,7 @@ body {
 }
 
 .game-stats {
-  font-size: 35px;
+  font-size: 33px;
 }
 
 .dice-image {
@@ -98,5 +98,17 @@ body {
   background-color: #00ff37;
   color: white;
   grid-column: 1 / -1;
+}
+
+#reset {
+  width: 80%;
+  padding: 10px 0 10px 0;
+  margin-bottom: 30px;
+  border: 0px;
+  background-color: #00b0b6;
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  border-radius: 20px;
 }
 /*# sourceMappingURL=styles.css.map */

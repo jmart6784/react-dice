@@ -34,8 +34,21 @@ const Dice = () => {
     setRounds(rounds + 1);
   };
 
+  const handleReset = () => {
+    setPlayerScore(0);
+    setComputerScore(0);
+    setDraws(0);
+    setRounds(0);
+    setPlayerDice(1);
+    setComputerDice(1);
+  };
+
   return (
     <div id="container">
+      <button id="reset" onClick={() => handleReset()}>
+        Reset
+      </button>
+
       <div className="player-info-container">
         <div className="player-div">
           <h1 className="p-name">You</h1>
