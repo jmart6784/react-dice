@@ -36,38 +36,42 @@ const Dice = () => {
 
   return (
     <div id="container">
-      <div id="player-div">
-        <h1 className="p-name">Player</h1>
-        <p>Score: {playerScore}</p>
+      <div className="player-info-container">
+        <div className="player-div">
+          <h1 className="p-name">You</h1>
+          <p className="game-stats">Score: {playerScore}</p>
 
-        <img
-          src={`images/${playerDice}.jpg`}
-          alt="dice"
-          height="150"
-          width="150"
-        />
+          <img
+            className="dice-image"
+            src={`images/${playerDice}.jpg`}
+            alt="dice"
+            height="250"
+            width="250"
+          />
+        </div>
+
+        <div id="mid-div" className="player-div">
+          <p className="game-stats">Draws: {draws}</p>
+          <p className="game-stats">Rounds: {rounds}</p>
+        </div>
+
+        <div className="player-div">
+          <h1 className="p-name">Computer</h1>
+          <p className="game-stats">Score: {computerScore}</p>
+
+          <img
+            className="dice-image"
+            src={`images/${computerDice}.jpg`}
+            alt="dice"
+            height="250"
+            width="250"
+          />
+        </div>
+
+        <button id="spin" onClick={() => handleSpin()}>
+          Spin
+        </button>
       </div>
-
-      <div>
-        <p className="draws">Draws: {draws}</p>
-        <p className="rounds">Rounds: {rounds}</p>
-      </div>
-
-      <div id="computer-div">
-        <h1 className="p-name">Computer</h1>
-        <p>Score: {computerScore}</p>
-
-        <img
-          src={`images/${computerDice}.jpg`}
-          alt="dice"
-          height="150"
-          width="150"
-        />
-      </div>
-
-      <button id="spin" onClick={() => handleSpin()}>
-        Spin
-      </button>
     </div>
   );
 };

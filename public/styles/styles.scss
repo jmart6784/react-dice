@@ -1,7 +1,78 @@
+$green: rgb(0, 255, 55);
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Oxygen", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: white;
+}
+
+body {
+  background-color: rgb(51, 51, 51);
+}
+
 #container {
-  border: 1px solid red;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  height: 100vh;
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.player-info-container {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 1fr;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  background-color: black;
+  width: 80%;
+  border-radius: 20px;
+}
+
+.player-div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+#mid-div {
+  row-gap: 70px;
+}
+
+.p-name {
+  font-size: 50px;
+}
+
+.game-stats {
+  font-size: 35px;
+}
+
+.dice-image {
+  border: 5px solid black;
+}
+
+#spin {
+  height: 70px;
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: 900;
+  border: 0px;
+  border-radius: 0 0 20px 20px;
+  background-color: $green;
+  color: white;
+  grid-column: 1 / -1;
 }
