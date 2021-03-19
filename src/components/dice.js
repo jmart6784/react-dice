@@ -25,6 +25,8 @@ const Dice = () => {
     } else {
       setComputerScore(computerScore + 1);
     }
+
+    setRounds(rounds + 1);
   };
 
   return (
@@ -36,9 +38,10 @@ const Dice = () => {
         <img src="images/1.jpg" alt="dice" height="150" width="150" />
       </div>
 
-      <button id="spin" onClick={() => handleSpin()}>
-        Spin
-      </button>
+      <div>
+        <p className="draws">Draws: {draws}</p>
+        <p className="rounds">Rounds: {rounds}</p>
+      </div>
 
       <div id="computer-div">
         <h1 className="p-name">Computer</h1>
@@ -46,6 +49,10 @@ const Dice = () => {
 
         <img src="images/1.jpg" alt="dice" height="150" width="150" />
       </div>
+
+      <button id="spin" onClick={() => handleSpin()}>
+        Spin
+      </button>
     </div>
   );
 };
