@@ -14,6 +14,17 @@ const Dice = () => {
 
   const handleSpin = () => {
     console.log(randomNumber(1, 6));
+
+    let playerDice = randomNumber(1, 6);
+    let computerDice = randomNumber(1, 6);
+
+    if (playerDice > computerDice) {
+      setPlayerScore(playerScore + 1);
+    } else if (playerDice === computerDice) {
+      setDraws(draws + 1);
+    } else {
+      setComputerScore(computerScore + 1);
+    }
   };
 
   return (
