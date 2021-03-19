@@ -18,6 +18,8 @@ const Dice = () => {
 
       <div id="computer-div">
         <h1 className="p-name">Computer</h1>
+
+        <img src="images/1.jpg" alt="dice-1" height="150" width="150" />
       </div>
     </div>
   );
