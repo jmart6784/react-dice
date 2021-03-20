@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 const Dice = () => {
-  const [playerScore, setPlayerScore] = useState(0);
-  const [computerScore, setComputerScore] = useState(0);
+  const [player, setPlayer] = useState({
+    score: 0,
+    dice: 1,
+  });
 
-  const [draws, setDraws] = useState(0);
-  const [rounds, setRounds] = useState(0);
+  const [computer, setComputer] = useState({
+    score: 0,
+    dice: 1,
+  });
 
-  const [playerDice, setPlayerDice] = useState(1);
-  const [computerDice, setComputerDice] = useState(1);
+  const [game, setGame] = useState({
+    draws: 0,
+    rounds: 0,
+  });
 
   const randomNumber = (myMin, myMax) => {
     return Math.floor(
@@ -16,47 +22,43 @@ const Dice = () => {
     );
   };
 
-  const handleSpin = () => {
-    setPlayerDice(randomNumber(1, 6));
-    setComputerDice(randomNumber(1, 6));
+  const handleRoll = () => {
+    setPlayer({ ...player, dice: randomNumber(1, 6) });
+    setComputer({ ...computer, dice: randomNumber(1, 6) });
 
-    let pDice = playerDice;
-    let cDice = computerDice;
+    console.log(
+      `Player: ${player.dice}, Computer: ${computer.dice}, ${player.dice} > ${
+        computer.dice
+      }: ${player.dice > computer.dice}`
+    );
 
-    if (pDice > cDice) {
-      setPlayerScore(playerScore + 1);
-    } else if (pDice === cDice) {
-      setDraws(draws + 1);
+    if (player.dice > computer.dice) {
+      setPlayer({ ...player, score: player.score + 1 });
+    } else if (player.dice === computer.dice) {
+      setGame({ ...game, draws: game.draws + 1 });
     } else {
-      setComputerScore(computerScore + 1);
+      setComputer({ ...computer, score: computer.score + 1 });
     }
 
-    setRounds(rounds + 1);
+    setGame({ ...game, rounds: game.rounds + 1 });
   };
 
-  const handleReset = () => {
-    setPlayerScore(0);
-    setComputerScore(0);
-    setDraws(0);
-    setRounds(0);
-    setPlayerDice(1);
-    setComputerDice(1);
-  };
+  const handleReset = () => {};
 
   return (
     <div id="container">
-      <button id="reset" onClick={() => handleReset()}>
+      <button id="reset" onClick={handleReset}>
         Reset
       </button>
 
       <div className="player-info-container">
         <div className="player-div">
           <h1 className="p-name">You</h1>
-          <p className="game-stats">Score: {playerScore}</p>
+          <p className="game-stats">Score: {player.score}</p>
 
           <img
             className="dice-image"
-            src={`images/${playerDice}.jpg`}
+            src={`images/${player.dice}.jpg`}
             alt="dice"
             height="250"
             width="250"
@@ -64,25 +66,25 @@ const Dice = () => {
         </div>
 
         <div id="mid-div" className="player-div">
-          <p className="game-stats">Draws: {draws}</p>
-          <p className="game-stats">Rounds: {rounds}</p>
+          <p className="game-stats">Draws: {game.draws}</p>
+          <p className="game-stats">Rounds: {game.rounds}</p>
         </div>
 
         <div className="player-div">
           <h1 className="p-name">Computer</h1>
-          <p className="game-stats">Score: {computerScore}</p>
+          <p className="game-stats">Score: {computer.score}</p>
 
           <img
             className="dice-image"
-            src={`images/${computerDice}.jpg`}
+            src={`images/${computer.dice}.jpg`}
             alt="dice"
             height="250"
             width="250"
           />
         </div>
 
-        <button id="spin" onClick={() => handleSpin()}>
-          Spin
+        <button id="roll" onClick={handleRoll}>
+          Roll
         </button>
       </div>
     </div>
