@@ -43,7 +43,11 @@ const Dice = () => {
     setGame({ ...game, rounds: game.rounds + 1 });
   };
 
-  const handleReset = () => {};
+  const handleReset = () => {
+    setPlayer({ score: 0, dice: 1 });
+    setComputer({ score: 0, dice: 1 });
+    setGame({ draws: 0, rounds: 0 });
+  };
 
   return (
     <div id="container">
