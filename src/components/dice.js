@@ -1,20 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 
 const Dice = () => {
-  const [player, setPlayer] = useState({
-    score: 0,
-    dice: 1,
-  });
+  const [playerDice, setPlayerDice] = useState(1);
+  const [playerScore, setPlayerScore] = useState(0);
 
-  const [computer, setComputer] = useState({
-    score: 0,
-    dice: 1,
-  });
+  const [computerDice, setComputerDice] = useState(1);
+  const [computerScore, setComputerScore] = useState(0);
 
-  const [game, setGame] = useState({
-    draws: 0,
-    rounds: 0,
-  });
+  const [draws, setDraws] = useState(-1);
+  const [rounds, setRounds] = useState(-1);
 
   const randomNumber = (myMin, myMax) => {
     return Math.floor(
@@ -22,31 +16,34 @@ const Dice = () => {
     );
   };
 
-  const handleRoll = () => {
-    setPlayer({ ...player, dice: randomNumber(1, 6) });
-    setComputer({ ...computer, dice: randomNumber(1, 6) });
-
-    console.log(
-      `Player: ${player.dice}, Computer: ${computer.dice}, ${player.dice} > ${
-        computer.dice
-      }: ${player.dice > computer.dice}`
-    );
-
-    if (player.dice > computer.dice) {
-      setPlayer({ ...player, score: player.score + 1 });
-    } else if (player.dice === computer.dice) {
-      setGame({ ...game, draws: game.draws + 1 });
-    } else {
-      setComputer({ ...computer, score: computer.score + 1 });
+  useEffect(() => {
+    if (rounds !== 0) {
+      if (playerDice > computerDice) {
+        setPlayerScore((prev) => prev + 1);
+      } else if (playerDice === computerDice) {
+        setDraws((prev) => prev + 1);
+      } else {
+        setComputerScore((prev) => prev + 1);
+      }
     }
 
-    setGame({ ...game, rounds: game.rounds + 1 });
+    setRounds((prev) => prev + 1);
+  }, [playerDice, computerDice]);
+
+  const handleRoll = () => {
+    setPlayerDice(randomNumber(1, 6));
+    setComputerDice(randomNumber(1, 6));
   };
 
   const handleReset = () => {
-    setPlayer({ score: 0, dice: 1 });
-    setComputer({ score: 0, dice: 1 });
-    setGame({ draws: 0, rounds: 0 });
+    setRounds(-1);
+    setDraws(-1);
+
+    setPlayerDice(1);
+    setPlayerScore(0);
+
+    setComputerDice(1);
+    setComputerScore(0);
   };
 
   return (
@@ -58,11 +55,11 @@ const Dice = () => {
       <div className="player-info-container">
         <div className="player-div">
           <h1 className="p-name">You</h1>
-          <p className="game-stats">Score: {player.score}</p>
+          <p className="game-stats">Score: {playerScore}</p>
 
           <img
             className="dice-image"
-            src={`images/${player.dice}.jpg`}
+            src={`images/${playerDice}.jpg`}
             alt="dice"
             height="250"
             width="250"
@@ -70,17 +67,17 @@ const Dice = () => {
         </div>
 
         <div id="mid-div" className="player-div">
-          <p className="game-stats">Draws: {game.draws}</p>
-          <p className="game-stats">Rounds: {game.rounds}</p>
+          <p className="game-stats">Draws: {draws}</p>
+          <p className="game-stats">Rounds: {rounds}</p>
         </div>
 
         <div className="player-div">
           <h1 className="p-name">Computer</h1>
-          <p className="game-stats">Score: {computer.score}</p>
+          <p className="game-stats">Score: {computerScore}</p>
 
           <img
             className="dice-image"
-            src={`images/${computer.dice}.jpg`}
+            src={`images/${computerDice}.jpg`}
             alt="dice"
             height="250"
             width="250"
