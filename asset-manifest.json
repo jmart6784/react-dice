@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/react-dice/static/js/main.eaf2290c.chunk.js",
+    "main.js.map": "/react-dice/static/js/main.eaf2290c.chunk.js.map",
+    "runtime-main.js": "/react-dice/static/js/runtime-main.a0327c00.js",
+    "runtime-main.js.map": "/react-dice/static/js/runtime-main.a0327c00.js.map",
+    "static/js/2.5ae12389.chunk.js": "/react-dice/static/js/2.5ae12389.chunk.js",
+    "static/js/2.5ae12389.chunk.js.map": "/react-dice/static/js/2.5ae12389.chunk.js.map",
+    "index.html": "/react-dice/index.html",
+    "static/js/2.5ae12389.chunk.js.LICENSE.txt": "/react-dice/static/js/2.5ae12389.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a0327c00.js",
+    "static/js/2.5ae12389.chunk.js",
+    "static/js/main.eaf2290c.chunk.js"
+  ]
+}

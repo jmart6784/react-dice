@@ -1,0 +1,114 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+  font-family: "Oxygen", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: white;
+}
+
+body {
+  background-color: #333333;
+}
+
+#container {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.player-info-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 0.5fr 1fr;
+      grid-template-columns: 1fr 0.5fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 50px;
+  background-color: black;
+  width: 80%;
+  border-radius: 20px;
+}
+
+.player-div {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#mid-div {
+  row-gap: 70px;
+}
+
+.p-name {
+  font-size: 50px;
+}
+
+.game-stats {
+  font-size: 33px;
+}
+
+.dice-image {
+  border: 5px solid black;
+}
+
+#roll {
+  height: 70px;
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: 900;
+  border: 0px;
+  border-radius: 0 0 20px 20px;
+  background-color: #00ff37;
+  color: white;
+  grid-column: 1 / -1;
+}
+
+#reset {
+  width: 80%;
+  padding: 10px 0 10px 0;
+  margin-bottom: 30px;
+  border: 0px;
+  background-color: #00b0b6;
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  border-radius: 20px;
+}
+/*# sourceMappingURL=styles.css.map */
