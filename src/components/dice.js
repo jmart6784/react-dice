@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Dice = () => {
   const [playerDice, setPlayerDice] = useState(1);
@@ -7,8 +7,8 @@ const Dice = () => {
   const [computerDice, setComputerDice] = useState(1);
   const [computerScore, setComputerScore] = useState(0);
 
-  const [draws, setDraws] = useState(-1);
-  const [rounds, setRounds] = useState(-1);
+  const [draws, setDraws] = useState(0);
+  const [rounds, setRounds] = useState(0);
 
   const randomNumber = (myMin, myMax) => {
     return Math.floor(
@@ -16,18 +16,40 @@ const Dice = () => {
     );
   };
 
+  // Avoid running useEffect on Mount
+  const isInitialMount = useRef(true);
+
   useEffect(() => {
-    if (rounds !== 0) {
-      if (playerDice > computerDice) {
-        setPlayerScore((prev) => prev + 1);
-      } else if (playerDice === computerDice) {
-        setDraws((prev) => prev + 1);
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      if (rounds < 10) {
+        if (rounds > 0) {
+          if (playerDice > computerDice) {
+            setPlayerScore((prev) => prev + 1);
+          } else if (playerDice === computerDice) {
+            setDraws((prev) => prev + 1);
+          } else {
+            setComputerScore((prev) => prev + 1);
+          }
+        }
+
+        setRounds((prev) => prev + 1);
       } else {
-        setComputerScore((prev) => prev + 1);
+        let winner;
+
+        if (playerScore > computerScore) {
+          winner = "You win!";
+        } else if (playerScore === computerScore) {
+          winner = "It's a draw!";
+        } else {
+          winner = "Computer wins!";
+        }
+
+        alert(winner);
+        handleReset();
       }
     }
-
-    setRounds((prev) => prev + 1);
   }, [playerDice, computerDice]);
 
   const handleRoll = () => {
@@ -36,8 +58,8 @@ const Dice = () => {
   };
 
   const handleReset = () => {
-    setRounds(-1);
-    setDraws(-1);
+    setRounds(0);
+    setDraws(0);
 
     setPlayerDice(1);
     setPlayerScore(0);
